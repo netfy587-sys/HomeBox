@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Runwear — A Field Guide to Running Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;600;700;800&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151a;
+    --ink-soft:#1b1f26;
+    --ink-line: rgba(237,234,224,0.14);
+    --paper:#edeae0;
+    --paper-line: rgba(18,21,26,0.14);
+    --signal:#ff4a23;
+    --steel:#9aa2b1;
+    --steel-on-paper:#6b6459;
+    --chalk:#f4f2ea;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--chalk);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; }
+
+  .display{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    line-height:0.92;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- lane-line divider (track lane motif) ---------- */
+  .lane{
+    width:100%;
+    height:14px;
+  }
+  .lane svg{ width:100%; height:100%; display:block; }
+
+  /* ---------- nav ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,21,26,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--ink-line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:1180px; margin:0 auto;
+  }
+  .nav .mark{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800; font-size:22px; letter-spacing:0.02em;
+    text-transform:uppercase;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .nav .mark span{ color:var(--signal); }
+  .nav ul{
+    list-style:none; display:flex; gap:34px; margin:0; padding:0;
+    font-size:14px; letter-spacing:0.02em;
+  }
+  .nav ul a{ text-decoration:none; color:var(--steel); transition:color .18s ease; }
+  .nav ul a:hover{ color:var(--chalk); }
+  .nav .bib{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-size:14px; font-weight:600; color:var(--steel);
+    border:1px solid var(--ink-line);
+    padding:6px 12px; border-radius:2px;
+  }
+  @media (max-width:820px){ .nav ul{ display:none; } }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    filter:saturate(0.92) contrast(1.03);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(12,14,18,0.15) 0%, rgba(12,14,18,0.35) 45%, rgba(12,14,18,0.94) 100%);
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    width:100%;
+    padding:0 32px 64px;
+    max-width:1180px; margin:0 auto;
+  }
+  .kicker{
+    font-size:13px; letter-spacing:0.14em; color:var(--signal);
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .kicker::before{ content:""; width:26px; height:2px; background:var(--signal); }
+  .hero h1{
+    font-size:clamp(48px, 9vw, 118px);
+    margin:0;
+    max-width:14ch;
+  }
+  .hero-sub{
+    max-width:520px;
+    margin-top:26px;
+    font-size:18px;
+    color:#dfdcd2;
+  }
+  .hero-meta{
+    display:flex; gap:40px; margin-top:46px; flex-wrap:wrap;
+  }
+  .hero-meta div{ min-width:120px; }
+  .hero-meta .num{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-size:34px; font-weight:700; color:var(--chalk);
+  }
+  .hero-meta .lbl{
+    font-size:12.5px; color:var(--steel); letter-spacing:0.03em; margin-top:2px;
+  }
+  .scroll-cue{
+    position:absolute; right:32px; bottom:34px; z-index:2;
+    writing-mode:vertical-rl;
+    font-size:12px; letter-spacing:0.18em; color:var(--steel);
+    display:flex; align-items:center; gap:10px;
+  }
+  .scroll-cue::after{ content:""; width:1px; height:46px; background:var(--steel); }
+  @media (max-width:700px){ .scroll-cue{ display:none; } }
+
+  /* ---------- section shells ---------- */
+  section{ padding:108px 0; }
+  section.tight{ padding:88px 0; }
+  .paper{ background:var(--paper); color:#20211d; }
+  .paper .steel-text{ color:var(--steel-on-paper); }
+  .eyebrow{
+    font-size:12.5px; letter-spacing:0.14em; color:var(--signal);
+    margin:0 0 18px;
+  }
+  h2.head{
+    font-size:clamp(34px, 4.4vw, 56px);
+    margin:0 0 8px;
+    max-width:16ch;
+  }
+  .lede{
+    max-width:620px;
+    font-size:17px;
+    color:var(--steel);
+    margin-top:18px;
+  }
+  .paper .lede{ color:var(--steel-on-paper); }
+
+  /* ---------- statement ---------- */
+  .statement{
+    text-align:left;
+  }
+  .statement p.big{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:600;
+    text-transform:none;
+    font-size:clamp(26px, 3.4vw, 42px);
+    line-height:1.22;
+    max-width:19ch;
+    margin:0;
+  }
+  .statement p.big em{
+    font-style:normal;
+    color:var(--signal);
+  }
+  .statement .attrib{
+    margin-top:28px;
+    font-size:14px;
+    color:var(--steel-on-paper);
+  }
+
+  /* ---------- anatomy feature grid ---------- */
+  .feature-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--ink-line);
+    margin-top:56px;
+    border:1px solid var(--ink-line);
+  }
+  .feature{
+    background:var(--ink);
+    padding:34px 28px 40px;
+  }
+  .feature .tag{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-size:15px; color:var(--signal); font-weight:700;
+    letter-spacing:0.04em;
+  }
+  .feature h3{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:700; text-transform:uppercase;
+    font-size:26px; margin:14px 0 12px; letter-spacing:0.01em;
+  }
+  .feature p{ font-size:14.5px; color:var(--steel); margin:0; }
+  @media (max-width:900px){ .feature-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .feature-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- alternating rows ---------- */
+  .row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:center;
+    padding:70px 0;
+    border-bottom:1px solid var(--ink-line);
+  }
+  .row:last-child{ border-bottom:none; }
+  .row.reverse .media{ order:2; }
+  .row.reverse .copy{ order:1; }
+  .row .media{ position:relative; }
+  .row .media img{
+    width:100%; height:440px; object-fit:cover;
+    border-radius:2px;
+  }
+  .row .media .frame-num{
+    position:absolute; top:-14px; left:-14px;
+    font-family:'Big Shoulders Display', sans-serif;
+    font-size:15px; color:var(--ink);
+    background:var(--signal);
+    padding:5px 11px;
+    letter-spacing:0.04em;
+  }
+  .row .copy .eyebrow{ margin-bottom:14px; }
+  .row .copy h3{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:700; text-transform:uppercase;
+    font-size:clamp(26px, 3vw, 36px);
+    margin:0 0 16px; letter-spacing:0.01em;
+    max-width:14ch;
+  }
+  .row .copy p{ color:var(--steel); font-size:15.5px; max-width:46ch; }
+  .row .copy ul{ margin:18px 0 0; padding:0; list-style:none; }
+  .row .copy ul li{
+    font-size:14.5px; color:#c9cbd1;
+    padding:9px 0; border-top:1px solid var(--ink-line);
+    display:flex; justify-content:space-between; gap:16px;
+  }
+  .row .copy ul li span.k{ color:var(--steel); }
+  @media (max-width:860px){
+    .row{ grid-template-columns:1fr; gap:28px; }
+    .row.reverse .media{ order:1; } .row.reverse .copy{ order:2; }
+    .row .media img{ height:320px; }
+  }
+
+  /* ---------- seasonal cards ---------- */
+  .season-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+    margin-top:54px;
+  }
+  .season-card{
+    border:1px solid var(--paper-line);
+    padding:30px 26px 32px;
+    background:#f5f3ea;
+  }
+  .season-card .heat{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-size:44px; font-weight:800; color:var(--signal);
+    line-height:1;
+  }
+  .season-card h4{
+    font-family:'Big Shoulders Display', sans-serif;
+    text-transform:uppercase; font-size:21px; margin:14px 0 10px; font-weight:700;
+  }
+  .season-card p{ font-size:14.5px; color:var(--steel-on-paper); margin:0 0 16px; }
+  .season-card .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .season-card .tags span{
+    font-size:12px; padding:5px 10px; border:1px solid var(--paper-line);
+    color:#3b382f;
+  }
+  @media (max-width:860px){ .season-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- steps ---------- */
+  .steps{
+    margin-top:54px;
+    display:flex; flex-direction:column;
+  }
+  .step{
+    display:grid; grid-template-columns:90px 1fr;
+    gap:26px;
+    padding:28px 0;
+    border-top:1px solid var(--ink-line);
+  }
+  .steps .step:last-child{ border-bottom:1px solid var(--ink-line); }
+  .step .idx{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-size:44px; font-weight:800; color:var(--ink-soft);
+    -webkit-text-stroke: 1px var(--steel);
+  }
+  .step h4{
+    font-family:'Big Shoulders Display', sans-serif;
+    text-transform:uppercase; font-weight:700; font-size:20px;
+    margin:2px 0 8px;
+  }
+  .step p{ margin:0; color:var(--steel); font-size:15px; max-width:60ch; }
+  @media (max-width:600px){ .step{ grid-template-columns:50px 1fr; } .step .idx{ font-size:32px; } }
+
+  /* ---------- gallery ---------- */
+  .gallery{
+    margin-top:54px;
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    grid-template-rows:260px 260px;
+    gap:14px;
+  }
+  .gallery a.g-item{ grid-row:span 2; }
+  .gallery .g-item{
+    overflow:hidden; position:relative; display:block;
+  }
+  .gallery .g-item img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .gallery .g-item:hover img{ transform:scale(1.045); }
+  .gallery .g-item .cap{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:16px 18px;
+    background:linear-gradient(0deg, rgba(10,12,15,0.82), rgba(10,12,15,0));
+    font-size:13px; color:var(--chalk); letter-spacing:0.02em;
+  }
+  @media (max-width:820px){
+    .gallery{ grid-template-columns:1fr 1fr; grid-template-rows:200px 200px 200px; }
+    .gallery a.g-item{ grid-row:span 1; }
+  }
+  @media (max-width:520px){
+    .gallery{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- care list ---------- */
+  .care{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:0 60px;
+    margin-top:54px;
+  }
+  .care-item{
+    padding:20px 0;
+    border-top:1px solid var(--paper-line);
+    display:flex; gap:18px;
+  }
+  .care-item:nth-last-child(-n+1), .care-item:nth-last-child(-n+2){}
+  .care-item .mk{
+    font-family:'Big Shoulders Display', sans-serif;
+    color:var(--signal); font-weight:800; font-size:20px; min-width:26px;
+  }
+  .care-item h5{ margin:0 0 6px; font-size:15.5px; font-weight:600; }
+  .care-item p{ margin:0; font-size:14px; color:var(--steel-on-paper); }
+  @media (max-width:760px){ .care{ grid-template-columns:1fr; } }
+
+  /* ---------- CTA / newsletter ---------- */
+  .cta{
+    position:relative;
+    background:var(--ink-soft);
+    border-top:1px solid var(--ink-line);
+    border-bottom:1px solid var(--ink-line);
+    text-align:left;
+  }
+  .cta-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;
+  }
+  .cta h2{ margin:0 0 14px; }
+  .cta p.lede{ margin-top:0; }
+  .cta form{
+    display:flex; gap:0; border-bottom:2px solid var(--chalk);
+    padding-bottom:14px;
+  }
+  .cta input[type="email"]{
+    flex:1; background:transparent; border:none; outline:none;
+    color:var(--chalk); font-size:18px; font-family:'Work Sans', sans-serif;
+    padding:8px 4px;
+  }
+  .cta input::placeholder{ color:var(--steel); }
+  .cta button{
+    background:none; border:none; color:var(--signal);
+    font-family:'Big Shoulders Display', sans-serif;
+    font-size:16px; text-transform:uppercase; letter-spacing:0.04em;
+    font-weight:700; cursor:pointer; padding:8px 4px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .cta .fine{ margin-top:14px; font-size:12.5px; color:var(--steel); }
+  @media (max-width:820px){ .cta-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:56px 0 40px;
+    background:var(--ink);
+  }
+  .foot-top{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:36px;
+    padding-bottom:40px; border-bottom:1px solid var(--ink-line);
+  }
+  .foot-mark{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-size:26px; font-weight:800; text-transform:uppercase;
+    max-width:280px;
+  }
+  .foot-mark span{ color:var(--signal); }
+  .foot-note{ margin-top:14px; font-size:13.5px; color:var(--steel); max-width:320px; }
+  .foot-cols{ display:flex; gap:64px; flex-wrap:wrap; }
+  .foot-col h6{
+    font-size:12px; letter-spacing:0.1em; color:var(--steel); margin:0 0 14px; text-transform:uppercase;
+  }
+  .foot-col ul{ list-style:none; margin:0; padding:0; }
+  .foot-col ul li{ margin-bottom:10px; font-size:14px; }
+  .foot-col ul a{ text-decoration:none; color:var(--chalk); opacity:0.85; }
+  .foot-col ul a:hover{ opacity:1; color:var(--signal); }
+  .foot-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    padding-top:26px; font-size:12.5px; color:var(--steel);
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <div class="mark">RUN<span>WEAR</span></div>
+    <ul>
+      <li><a href="#anatomy">Anatomy of a Kit</a></li>
+      <li><a href="#fabric">Fabric &amp; Fit</a></li>
+      <li><a href="#seasons">Seasons</a></li>
+      <li><a href="#choose">How to Choose</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#care">Care</a></li>
+    </ul>
+    <div class="bib">FIELD GUIDE №04</div>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1762709753393-a2937622949e?w=1920&auto=format&fit=crop&q=80" alt="Runners mid-stride on a track, captured with motion blur">
+  <div class="hero-inner">
+    <div class="kicker">A FIELD GUIDE TO RUNNING KIT</div>
+    <h1 class="display">What you<br>wear runs<br>with you.</h1>
+    <p class="hero-sub">Every layer on a runner's body has a job — moving sweat, cutting wind, staying out of the way. This guide breaks down what running kit is actually made of, and how to choose yours by season, distance and weather, not by what's trending.</p>
+    <div class="hero-meta">
+      <div><div class="num">04</div><div class="lbl">core layers explained</div></div>
+      <div><div class="num">03</div><div class="lbl">seasonal kit types</div></div>
+      <div><div class="num">05</div><div class="lbl">steps to choosing yours</div></div>
+    </div>
+  </div>
+  <div class="scroll-cue">SCROLL</div>
+</section>
+
+<div class="lane" style="background:var(--ink);">
+  <svg preserveAspectRatio="none" viewBox="0 0 1200 14"><line x1="0" y1="7" x2="1200" y2="7" stroke="#2a3038" stroke-width="1" stroke-dasharray="18 14"/></svg>
+</div>
+
+<section class="paper tight">
+  <div class="wrap statement">
+    <p class="eyebrow" style="color:var(--signal);">OPENING NOTE</p>
+    <p class="big">Running gear isn't fashion first. It's a set of small decisions — <em>fabric, fit, seam placement</em> — that either disappear on the run or remind you they exist at kilometre six.</p>
+    <p class="attrib">This guide exists to explain those decisions plainly, with no product to sell you at the end of it.</p>
+  </div>
+</section>
+
+<section id="anatomy">
+  <div class="wrap">
+    <p class="eyebrow">01 — THE BASICS</p>
+    <h2 class="display head">Anatomy of a running kit</h2>
+    <p class="lede">A full kit is really four separate systems working together. Understanding what each one is for makes it much easier to judge whether a piece of clothing will help you or fight you.</p>
+
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="tag display">01</div>
+        <h3 class="display">Base layer</h3>
+        <p>Sits against skin. Its only job is moving sweat off the body and into the air, so it should feel almost dry even mid-run.</p>
+      </div>
+      <div class="feature">
+        <div class="tag display">02</div>
+        <h3 class="display">Mid layer</h3>
+        <p>Traps a thin layer of warm air in cooler weather. Needed on cold mornings, unnecessary — even harmful — in heat.</p>
+      </div>
+      <div class="feature">
+        <div class="tag display">03</div>
+        <h3 class="display">Outer shell</h3>
+        <p>Blocks wind and rain. The best shells breathe almost as well as they repel, so effort doesn't turn into a sauna.</p>
+      </div>
+      <div class="feature">
+        <div class="tag display">04</div>
+        <h3 class="display">Footwear</h3>
+        <p>Absorbs impact and returns energy on every stride — the single piece of kit that changes how a run actually feels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fabric" class="paper">
+  <div class="wrap">
+    <p class="eyebrow">02 — MATERIALS &amp; FIT</p>
+    <h2 class="display head">Fabric and fit, in plain terms</h2>
+    <p class="lede">Marketing language around running fabrics can get noisy. Here's what's actually happening in the weave, stitched together with a few real details worth checking before you buy anything.</p>
+
+    <div class="row">
+      <div class="media">
+        <span class="frame-num">FIG. 01</span>
+        <img src="https://images.unsplash.com/photo-1556731329-62da0b1ae213?w=1000&auto=format&fit=crop&q=80" alt="Close-up of a grey running shoe, showing texture and sole detail">
+      </div>
+      <div class="copy">
+        <p class="eyebrow steel-text">Moisture-wicking weaves</p>
+        <h3 class="display">Fabric that pulls, not soaks</h3>
+        <p>Technical fabrics use fine synthetic fibres woven so sweat spreads across a wide surface and evaporates fast, instead of pooling in cotton's tight, absorbent weave. That's the whole trick behind "wicking" — it's a shape of the fabric, not a coating sprayed on top.</p>
+        <ul>
+          <li><span class="k">Best for</span> long runs, humid weather</li>
+          <li><span class="k">Watch for</span> seams that sit flat against skin</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row reverse">
+      <div class="media">
+        <span class="frame-num">FIG. 02</span>
+        <img src="https://images.unsplash.com/photo-1613937574892-25f441264a09?w=1000&auto=format&fit=crop&q=80" alt="A group of runners moving together down a city street">
+      </div>
+      <div class="copy">
+        <p class="eyebrow steel-text">Fit and freedom of movement</p>
+        <h3 class="display">Compression vs. relaxed cut</h3>
+        <p>Compression kit applies gentle, even pressure to support muscles on longer efforts, while relaxed cuts prioritise airflow and unrestricted stride. Neither is "correct" — the right choice depends on distance, temperature, and honestly, personal comfort.</p>
+        <ul>
+          <li><span class="k">Compression suits</span> tempo runs, recovery days</li>
+          <li><span class="k">Relaxed suits</span> easy runs, hot climates</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="media">
+        <span class="frame-num">FIG. 03</span>
+        <img src="https://images.unsplash.com/photo-1712955685153-1b9c8edd071f?w=1000&auto=format&fit=crop&q=80" alt="A runner silhouetted on a hilltop trail at sunrise">
+      </div>
+      <div class="copy">
+        <p class="eyebrow steel-text">Visibility &amp; low-light detailing</p>
+        <h3 class="display">Reflective elements, done well</h3>
+        <p>Good reflective detailing sits at the ankles and wrists, where the movement of running catches headlights at the widest angle — not just as a printed logo on the chest, which barely helps a driver notice you at all.</p>
+        <ul>
+          <li><span class="k">Essential for</span> early mornings, monsoon evenings</li>
+          <li><span class="k">Look for</span> reflective strips on moving joints</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lane" style="background:var(--ink);">
+  <svg preserveAspectRatio="none" viewBox="0 0 1200 14"><line x1="0" y1="7" x2="1200" y2="7" stroke="#2a3038" stroke-width="1" stroke-dasharray="18 14"/></svg>
+</div>
+
+<section id="seasons">
+  <div class="wrap">
+    <p class="eyebrow">03 — WEATHER</p>
+    <h2 class="display head">Dressing for the season you're actually running in</h2>
+    <p class="lede">The same kit rarely works across a full year. Here's a rough starting point for three very different conditions — treat it as a baseline to adjust, not a rulebook.</p>
+  </div>
+</section>
+
+<section class="paper tight" style="padding-top:0;">
+  <div class="wrap">
+    <div class="season-grid">
+      <div class="season-card">
+        <div class="heat display">32°+</div>
+        <h4 class="display">Summer heat</h4>
+        <p>Lightweight, loose-fitting, light-coloured fabric that reflects heat rather than trapping it. Ventilation panels at the back and underarms matter more than anything else here.</p>
+        <div class="tags"><span>Singlets</span><span>Mesh panels</span><span>Light colours</span></div>
+      </div>
+      <div class="season-card">
+        <div class="heat display">MON</div>
+        <h4 class="display">Monsoon runs</h4>
+        <p>Water-resistant (not fully waterproof — that traps heat) outer layers, quick-drying fabric underneath, and grippier outsoles for wet pavement and trail mud alike.</p>
+        <div class="tags"><span>Water-resistant shells</span><span>Grip soles</span><span>Reflective trim</span></div>
+      </div>
+      <div class="season-card">
+        <div class="heat display">10°−</div>
+        <h4 class="display">Cold mornings</h4>
+        <p>Thin layering beats one thick layer — trapped air between layers insulates better, and you can shed a layer once your body warms up mid-run.</p>
+        <div class="tags"><span>Thermal base layer</span><span>Windproof shell</span><span>Gloves &amp; headband</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="choose">
+  <div class="wrap">
+    <p class="eyebrow">04 — DECISION GUIDE</p>
+    <h2 class="display head">How to choose your kit, step by step</h2>
+    <p class="lede">A short, practical sequence for narrowing down what to actually put on before a run — useful whether you're kitting out for the first time or rebuilding after a few seasons.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="idx display">01</div>
+        <div>
+          <h4 class="display">Start with the run, not the wardrobe</h4>
+          <p>Distance and pace change what you need. A 5K tempo run and a three-hour long run put very different demands on fabric and support.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="idx display">02</div>
+        <div>
+          <h4 class="display">Check the forecast, not the calendar</h4>
+          <p>Season is a rough guide; the actual temperature, humidity, and wind on the day should decide your layers.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="idx display">03</div>
+        <div>
+          <h4 class="display">Fit before features</h4>
+          <p>A perfectly wicking fabric still chafes if it's cut wrong. Try kit in the same motion you'll actually run in, not standing still.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="idx display">04</div>
+        <div>
+          <h4 class="display">Add visibility if you run in low light</h4>
+          <p>Early mornings and evenings call for reflective detailing regardless of how warm or cool the weather is.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="idx display">05</div>
+        <div>
+          <h4 class="display">Test on a short run before a long one</h4>
+          <p>New kit deserves a trial 5K before it's trusted on race day or a long run — small irritations only show up once you're moving.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lane" style="background:var(--ink);">
+  <svg preserveAspectRatio="none" viewBox="0 0 1200 14"><line x1="0" y1="7" x2="1200" y2="7" stroke="#2a3038" stroke-width="1" stroke-dasharray="18 14"/></svg>
+</div>
+
+<section id="gallery" class="tight">
+  <div class="wrap">
+    <p class="eyebrow">05 — ON THE ROAD</p>
+    <h2 class="display head">Kit in motion</h2>
+    <p class="lede">Running clothing only really makes sense once it's moving. A few frames of it at work.</p>
+
+    <div class="gallery">
+      <a class="g-item" href="#">
+        <img src="https://images.unsplash.com/photo-1613937574892-25f441264a09?w=900&auto=format&fit=crop&q=80" alt="Group of runners together on a street">
+        <div class="cap">Group runs put layering choices to the test fastest</div>
+      </a>
+      <a class="g-item" href="#">
+        <img src="https://images.unsplash.com/photo-1762709753393-a2937622949e?w=700&auto=format&fit=crop&q=80" alt="Runners captured mid-stride with motion blur">
+        <div class="cap">Fabric behaviour under real effort</div>
+      </a>
+      <a class="g-item" href="#">
+        <img src="https://images.unsplash.com/photo-1712955685153-1b9c8edd071f?w=700&auto=format&fit=crop&q=80" alt="Solo runner silhouetted on a trail at sunrise">
+        <div class="cap">Trail conditions demand grip and visibility</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="care" class="paper">
+  <div class="wrap">
+    <p class="eyebrow">06 — LONGEVITY</p>
+    <h2 class="display head">Getting more runs out of the kit you already own</h2>
+    <p class="lede">Technical fabric loses its wicking ability long before it looks worn out. A few habits keep it working the way it was designed to.</p>
+
+    <div class="care">
+      <div class="care-item">
+        <div class="mk display">01</div>
+        <div><h5>Skip the fabric softener</h5><p>It coats synthetic fibres and blocks the exact wicking action you paid for.</p></div>
+      </div>
+      <div class="care-item">
+        <div class="mk display">02</div>
+        <div><h5>Wash in cold water</h5><p>Heat breaks down elastane fibres faster, loosening compression fit over time.</p></div>
+      </div>
+      <div class="care-item">
+        <div class="mk display">03</div>
+        <div><h5>Turn kit inside out</h5><p>Protects printed logos and reflective detailing from direct friction in the wash.</p></div>
+      </div>
+      <div class="care-item">
+        <div class="mk display">04</div>
+        <div><h5>Air-dry, out of direct sun</h5><p>Tumble drying and harsh sunlight both degrade elastic fibres and reflective coatings.</p></div>
+      </div>
+      <div class="care-item">
+        <div class="mk display">05</div>
+        <div><h5>Rotate your shoes</h5><p>Alternating between two pairs lets cushioning foam fully recover between runs.</p></div>
+      </div>
+      <div class="care-item">
+        <div class="mk display">06</div>
+        <div><h5>Retire kit by feel, not age</h5><p>Once fabric stays damp longer or elastic feels loose, it's past doing its job well.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap cta-grid">
+    <div>
+      <p class="eyebrow">STAY IN THE LOOP</p>
+      <h2 class="display head">More field notes, no sales pitch</h2>
+      <p class="lede">Occasional, short notes on running gear, fit, and weather — written the same way as this guide. No spam, no product drops.</p>
+    </div>
+    <div>
+      <form onsubmit="return false;">
+        <input type="email" placeholder="you@email.com" aria-label="Email address">
+        <button type="submit">Notify me →</button>
+      </form>
+      <p class="fine">One email, roughly once a month. Unsubscribe any time.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-mark">RUN<span>WEAR</span></div>
+        <p class="foot-note">An independent field guide to running kit — fabrics, fit, and weather, explained plainly. Not a store.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h6>Guide</h6>
+          <ul>
+            <li><a href="#anatomy">Anatomy of a Kit</a></li>
+            <li><a href="#fabric">Fabric &amp; Fit</a></li>
+            <li><a href="#seasons">Seasons</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h6>More</h6>
+          <ul>
+            <li><a href="#choose">How to Choose</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#care">Care Tips</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Runwear Field Guide. Photography via Unsplash contributors.</span>
+      <span>Written for runners, not for a checkout page.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
